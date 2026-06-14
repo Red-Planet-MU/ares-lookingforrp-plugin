@@ -15,6 +15,10 @@ module AresMUSH
       Global.read_config("lookingforrp", "shortcuts")
     end
 
+    def self.install_setup
+      Character.all.each { |c| c.update(looking_for_rp_announce: 'on') }
+    end
+
     def self.get_cmd_handler(client, cmd, enactor)
       case cmd.root
       when 'lookingforrp'
