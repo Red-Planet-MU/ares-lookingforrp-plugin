@@ -12,12 +12,31 @@ This plugin adds a section to the web sidebar and the in-client 'who' list to in
 
 ## Web Portal
 
-All functions work on the web if you follow the additional steps. You will not be able to enjoy the web functions without making code edits. This is easiest if you have a Github fork of your own but you can also edit the files directly in the server shell. I would strongly encourage doing these but technically it will work in the client just fine if you don't.
+All functions work on the web if you follow the additional steps. You will not be able to enjoy the web functions without making code edits. This is easiest if you have a Github fork of your own but you can also edit the files directly in the server shell. I would strongly encourage doing these but technically it will work in the client just fine if you don't. If you do not want to mess with the web, you should still do steps 1-4 for full functionality in the client.
 
 ## Installation
 
 1. In the game, run `plugin/install <github url>`.
-2. Edit `custom_web_data.rb` with the below. NOTE: `custom_sidebar_data` already exists. If you have custom data already, you will need to add these fields to your existing data. `custom_play_data` is completely new and will not exist. 
+2. Run `ruby LookingForRp.install_setup` from a bit with the Coder role in the client.
+3. Edit `who.yml` in your game's config files to add (after Status):
+```
+- field: lookingforrp
+    width: 5
+    title: RP?
+```
+4. Edit `profile_api.rb` and add these lines anywhere in the `case field_type` statement:
+```
+when 'lookingforrp'
+        looking_for_rp = char.looking_for_rp
+        case char.looking_for_rp_type
+          when "scene"
+            flag = "%xgRP%xn"
+          when "text"
+            flag = "%xmTXT%xn"
+        end
+        looking_for_rp ? flag : ""
+```
+5. Edit `custom_web_data.rb` with the below. NOTE: `custom_sidebar_data` already exists. If you have custom data already, you will need to add these fields to your existing data. `custom_play_data` is completely new and will not exist. 
 ```
     def self.custom_sidebar_data(viewer)
       return {
@@ -33,7 +52,7 @@ All functions work on the web if you follow the additional steps. You will not b
       }
     end
 ```
-3. Edit `custom_char_fields.rb` with the below. ANOTHER NOTE: if you have already added custom tabs to your profile edit screen, you will want to add these fields to your existing data.
+6. Edit `custom_char_fields.rb` with the below. ANOTHER NOTE: if you have already added custom tabs to your profile edit screen, you will want to add these fields to your existing data.
 ```
 def self.get_fields_for_editing(char, viewer)
         return {
@@ -42,18 +61,12 @@ def self.get_fields_for_editing(char, viewer)
         }
       end
 ```
-4. Also in `custom_char_fields.rb` :
+7. Also in `custom_char_fields.rb`, edit the custom hook to include the below :
 ```def self.save_fields_from_profile_edit2(char, enactor, char_data)
         char.update(looking_for_rp_announce: Website.format_input_for_mush(char_data["custom"]["looking_for_rp_announce"] == true ? "on" : "off"))
       end
 ```
-5. Edit `who.yml` in your game's config files to add (after Status):
-```
-- field: lookingforrp
-    width: 5
-    title: RP?
-```
-6. Edit and add these lines anywhere in the `case field_type` statement:
+8. Edit `profile_api.rb` and add these lines anywhere in the `case field_type` statement:
 ```
 when 'lookingforrp'
         looking_for_rp = char.looking_for_rp
@@ -65,7 +78,7 @@ when 'lookingforrp'
         end
         looking_for_rp ? flag : ""
 ```
-6. Add these lines to your custom styles:
+9. Add these lines to your custom styles:
 ```.lfrp-row {
   display: flex;
   flex-direction: row;
@@ -112,26 +125,25 @@ when 'lookingforrp'
   border-radius: .3em;
 }
 ```
-
-7. Set the background-color for the `hover` to something that pleases your eye. This is what the button will do when you mouse over it.
-8. Set the color for the `.lfrp-row .fa-solid` to something that pleases your eye. This is what the phone icon will be colored. 
-9. Add the contents of the following files from the webportal folder to your versions of those files in the Components folder. If you have no custom sidebar data, you can copy-paste the entire file.
-	- sidebar-custom.hbs
-	- sidebar-custom.js
-10. The following completely new files should have been added during install from the webportal folder to your webportal directory in the Components folder.
+10. Set the background-color for the `hover` to something that pleases your eye. This is what the button will do when you mouse over it.
+11. Set the color for the `.lfrp-row .fa-solid` to something that pleases your eye. This is what the phone icon will be colored. 
+12. Add the contents of the following files from the `custom` folder to your versions of those files in the Components folder. If you have no custom sidebar data, you can copy-paste the entire file.
+	- `sidebar-custom.hbs`
+	- `sidebar-custom.js`
+13. The following completely new files should have been added during install from the webportal folder to your webportal directory in the Components folder.
 	- play-custom.hbs
 	- play-custom.js
-11. Edit `play.hbs` to add the following snippet (new code is BETWEEN the `{{/each}}` and the `</div>`) between lines 94 and 95 at the time of this writing (inside)
+14. Edit `play.hbs` to add the following snippet (new code is BETWEEN the `{{/each}}` and the `</div>`) between lines 94 and 95 at the time of this writing (inside)
 ```
 {{/each}}
       <PlayCustom @custom_play={{this.model.app.game.custom_play}}/> 
      </div>
 ```
-12. Edit `char-edit-custom-tabs.hbs` to add this line.
+15. Edit `char-edit-custom-tabs.hbs` to add this line.
 ```
 <li><a data-bs-toggle="tab" class="nav-link" href="#lfrp">Looking for RP</a></li>
 ```
-13. Edit `char-edit-custom.hbs` to add this segment:
+16. Edit `char-edit-custom.hbs` to add this segment:
 ```
 <div id="lfrp" class="tab-pane fade in">
 
@@ -141,7 +153,7 @@ Announce to the game when Looking for RP?
 
 </div>
 ```
-14. Edit `char-edit-custom.js` to add this segment:
+17. Edit `char-edit-custom.js` to add this segment:
 ```
 onUpdate: function() {
     // Return a hash containing your data.  Character data will be in 'char'.  For example:
@@ -151,6 +163,13 @@ onUpdate: function() {
     };
   }
 ```
+18. Do the following, in order:
+	- `load config`
+	- `load website`
+	- `load profile`
+	- `load styles`
+	- `website deploy`
+Following a successful load and website deploy, the installation should be complete and a hard refresh will show the new sidebar section. Use this opportunity to tweak the CSS to your liking.
 
 ## Uninstalling
 
