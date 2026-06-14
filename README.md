@@ -145,7 +145,7 @@ Announce to the game when Looking for RP?
 
 </div>
 ```
-16. Edit `char-edit-custom.js` to add this segment:
+16. Edit `char-edit-custom.js` so that the existing segment includes the new return line:
 ```
 onUpdate: function() {
     // Return a hash containing your data.  Character data will be in 'char'.  For example:
