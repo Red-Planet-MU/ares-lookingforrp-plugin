@@ -66,19 +66,7 @@ def self.get_fields_for_editing(char, viewer)
         char.update(looking_for_rp_announce: Website.format_input_for_mush(char_data["custom"]["looking_for_rp_announce"] == true ? "on" : "off"))
       end
 ```
-8. Edit `profile_api.rb` and add these lines anywhere in the `case field_type` statement:
-```
-when 'lookingforrp'
-        looking_for_rp = char.looking_for_rp
-        case char.looking_for_rp_type
-          when "scene"
-            flag = "%xgRP%xn"
-          when "text"
-            flag = "%xmTXT%xn"
-        end
-        looking_for_rp ? flag : ""
-```
-9. Add these lines to your custom styles:
+8. Add these lines to your custom styles:
 ```.lfrp-row {
   display: flex;
   flex-direction: row;
@@ -125,25 +113,25 @@ when 'lookingforrp'
   border-radius: .3em;
 }
 ```
-10. Set the background-color for the `hover` to something that pleases your eye. This is what the button will do when you mouse over it.
-11. Set the color for the `.lfrp-row .fa-solid` to something that pleases your eye. This is what the phone icon will be colored. 
-12. Add the contents of the following files from the `custom` folder to your versions of those files in the Components folder. If you have no custom sidebar data, you can copy-paste the entire file.
+9. Set the background-color for the `hover` to something that pleases your eye. This is what the button will do when you mouse over it.
+10. Set the color for the `.lfrp-row .fa-solid` to something that pleases your eye. This is what the phone icon will be colored. 
+11. Add the contents of the following files from the `custom` folder to your versions of those files in the Components folder. If you have no custom sidebar data, you can copy-paste the entire file.
 	- `sidebar-custom.hbs`
 	- `sidebar-custom.js`
-13. The following completely new files should have been added during install from the webportal folder to your webportal directory in the Components folder.
+12. The following completely new files should have been added during install from the webportal folder to your webportal directory in the Components folder.
 	- play-custom.hbs
 	- play-custom.js
-14. Edit `play.hbs` to add the following snippet (new code is BETWEEN the `{{/each}}` and the `</div>`) between lines 94 and 95 at the time of this writing (inside)
+13. Edit `play.hbs` to add the following snippet (new code is BETWEEN the `{{/each}}` and the `</div>`) between lines 94 and 95 at the time of this writing (inside)
 ```
-{{/each}}
+       {{/each}}
       <PlayCustom @custom_play={{this.model.app.game.custom_play}}/> 
      </div>
 ```
-15. Edit `char-edit-custom-tabs.hbs` to add this line.
+14. Edit `char-edit-custom-tabs.hbs` to add this line.
 ```
 <li><a data-bs-toggle="tab" class="nav-link" href="#lfrp">Looking for RP</a></li>
 ```
-16. Edit `char-edit-custom.hbs` to add this segment:
+15. Edit `char-edit-custom.hbs` to add this segment:
 ```
 <div id="lfrp" class="tab-pane fade in">
 
@@ -153,7 +141,7 @@ Announce to the game when Looking for RP?
 
 </div>
 ```
-17. Edit `char-edit-custom.js` to add this segment:
+16. Edit `char-edit-custom.js` to add this segment:
 ```
 onUpdate: function() {
     // Return a hash containing your data.  Character data will be in 'char'.  For example:
@@ -163,7 +151,7 @@ onUpdate: function() {
     };
   }
 ```
-18. Do the following, in order:
+17. Do the following, in order:
 	- `load config`
 	- `load website`
 	- `load profile`
