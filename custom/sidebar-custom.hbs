@@ -52,8 +52,10 @@
         {{hour}}
       </PowerSelect>
       <br>
+      {{#if this.custom.txt_extra_installed}}
       <label for="txtonly">Only look for a TXT Scene?</label>
       <Input @id="txtonly" @type="checkbox" @checked={{this.lfrpTxt}} />
+      {{/if}}
     </BsModalSimple>
   </div>
 
