@@ -1,7 +1,11 @@
 $:.unshift File.dirname(__FILE__)
 
 module AresMUSH
-     module LookingForRp
+  module LookingForRp
+
+    def self.plugin_version
+      "1.0"
+    end
 
     def self.plugin_dir
       File.dirname(__FILE__)
