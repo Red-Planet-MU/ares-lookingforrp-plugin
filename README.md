@@ -8,7 +8,7 @@ This works with Ares 2.0+ as of time of release.
 
 ## Overview + Credits
 
-This plugin adds a section to the web sidebar and the in-client 'who' list to indicate if a particular character is Looking for RP. The flag is set on a timer and can go up to 3 hours, and can be optionally set to indicate that the character is only looking for a 'Txt' scene if the [Text Messages plugin](https://github.com/spiritlake/ares-txt-plugin) is installed. Both emit to the RP Requests channel, although players can disable the announcement if they prefer. This work builds on code originally written by Tat for Shattered after the original idea was seen on Concordia.
+This plugin adds a section to the web sidebar, the 'Play' screen, and the in-client 'who' list to indicate if a particular character is Looking for RP. The flag is set on a timer and can go up to 3 hours, and can be optionally set to indicate that the character is only looking for a 'Txt' scene if the [Text Messages plugin](https://github.com/spiritlake/ares-txt-plugin) is installed. Both emit to the RP Requests channel, although players can disable the announcement if they prefer. This work builds on code originally written by Tat for Shattered after the original idea was seen on Concordia.
 
 ## Web Portal
 
