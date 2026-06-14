@@ -157,6 +157,7 @@ onUpdate: function() {
 	- `load profile`
 	- `load styles`
 	- `website deploy`
+
 Following a successful load and website deploy, the installation should be complete and a hard refresh will show the new sidebar section. Use this opportunity to tweak the CSS to your liking.
 
 ## Uninstalling
