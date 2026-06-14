@@ -16,15 +16,9 @@ All functions work on the web if you follow the additional steps. You will not b
 
 ## Installation
 
-1. In the game, run `plugin/install <github url>`.
-2. Run `ruby LookingForRp.install_setup` from a bit with the Coder role in the client.
-3. Edit `who.yml` in your game's config files to add (after Status):
-```
-- field: lookingforrp
-    width: 5
-    title: RP?
-```
-4. Edit `profile_api.rb` and add these lines anywhere in the `case field_type` statement:
+1. From a bit with the Coder role in the client., run `plugin/install <github url>`.
+2. Run `ruby LookingForRp.install_setup`.
+3. Edit `profile_api.rb` (in `plugins/profile/public`) and add these lines anywhere in the `case field_type` statement:
 ```
 when 'lookingforrp'
         looking_for_rp = char.looking_for_rp
@@ -35,8 +29,15 @@ when 'lookingforrp'
             flag = "%xmTXT%xn"
         end
         looking_for_rp ? flag : ""
+
 ```
-5. Edit `custom_web_data.rb` with the below. NOTE: `custom_sidebar_data` already exists. If you have custom data already, you will need to add these fields to your existing data. `custom_play_data` is completely new and will not exist. 
+3. Edit `who.yml` in your game's config files to add (after Status):
+```
+- field: lookingforrp
+  width: 5
+  title: RP?
+```
+5. Edit `custom_web_data.rb` (in `plugins/website`) with the below. NOTE: `custom_sidebar_data` already exists. If you have custom data already, you will need to add these fields to your existing data. `custom_play_data` is completely new and will not exist. 
 ```
     def self.custom_sidebar_data(viewer)
       return {
@@ -52,11 +53,10 @@ when 'lookingforrp'
       }
     end
 ```
-6. Edit `custom_char_fields.rb` with the below. ANOTHER NOTE: if you have already added custom tabs to your profile edit screen, you will want to add these fields to your existing data.
+6. Edit `custom_char_fields.rb` (in `plugins/profile`) with the below. ANOTHER NOTE: if you have already added custom tabs to your profile edit screen, you will want to add these fields to your existing data.
 ```
 def self.get_fields_for_editing(char, viewer)
         return {
-          txt_color: char.txt_color,
           looking_for_rp_announce: char.looking_for_rp_announce == "on" ? true : false ,
         }
       end
@@ -67,7 +67,8 @@ def self.get_fields_for_editing(char, viewer)
       end
 ```
 8. Add these lines to your custom styles:
-```.lfrp-row {
+```
+.lfrp-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -151,12 +152,12 @@ onUpdate: function() {
     };
   }
 ```
-17. Do the following, in order:
+17. After pulling your changes onto the game, do the following, in order:
 	- `load config`
 	- `load website`
 	- `load profile`
 	- `load styles`
-	- `website deploy`
+	- `website/deploy`
 
 Following a successful load and website deploy, the installation should be complete and a hard refresh will show the new sidebar section. Use this opportunity to tweak the CSS to your liking.
 
