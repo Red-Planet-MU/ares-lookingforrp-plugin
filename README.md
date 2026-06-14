@@ -66,7 +66,12 @@ def self.get_fields_for_editing(char, viewer)
         char.update(looking_for_rp_announce: Website.format_input_for_mush(char_data["custom"]["looking_for_rp_announce"] == true ? "on" : "off"))
       end
 ```
-8. Add these lines to your custom styles:
+8. Edit `get_game_info_handler.rb` (in `website/web`) to include the below after `custom_sidebar: Website.custom_sidebar_data(enactor)`:
+```
+,
+          custom_play: Website.custom_play_data(enactor)
+```
+9. Add these lines to your custom styles:
 ```
 .lfrp-row {
   display: flex;
@@ -114,14 +119,11 @@ def self.get_fields_for_editing(char, viewer)
   border-radius: .3em;
 }
 ```
-9. Set the background-color for the `hover` to something that pleases your eye. This is what the button will do when you mouse over it.
-10. Set the color for the `.lfrp-row .fa-solid` to something that pleases your eye. This is what the phone icon will be colored. 
-11. Add the contents of the following files from the `custom` folder to your versions of those files in the Components folder. If you have no custom sidebar data, you can copy-paste the entire file.
+10. Set the background-color for the `hover` to something that pleases your eye. This is what the button will do when you mouse over it.
+11. Set the color for the `.lfrp-row .fa-solid` to something that pleases your eye. This is what the phone icon will be colored. 
+12. Add the contents of the following files from the `custom` folder to your versions of those files in the Components folder. If you have no custom sidebar data, you can copy-paste the entire file.
 	- `sidebar-custom.hbs`
 	- `sidebar-custom.js`
-12. The following completely new files should have been added during install from the webportal folder to your webportal directory in the Components folder.
-	- play-custom.hbs
-	- play-custom.js
 13. Edit `play.hbs` to add the following snippet (new code is BETWEEN the `{{/each}}` and the `</div>`) between lines 94 and 95 at the time of this writing (inside)
 ```
        {{/each}}
