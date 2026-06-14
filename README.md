@@ -62,7 +62,8 @@ def self.get_fields_for_editing(char, viewer)
       end
 ```
 7. Also in `custom_char_fields.rb`, edit the custom hook to include the below :
-```def self.save_fields_from_profile_edit2(char, enactor, char_data)
+```
+def self.save_fields_from_profile_edit2(char, enactor, char_data)
         char.update(looking_for_rp_announce: Website.format_input_for_mush(char_data["custom"]["looking_for_rp_announce"] == true ? "on" : "off"))
       end
 ```
