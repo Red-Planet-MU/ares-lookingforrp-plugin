@@ -2,7 +2,7 @@
 
 ## Status
 
-**Community Supported** You can contact me (Trashcan) if you have issues with this code. I cannot guarantee timeline but I will respond.
+**Community Supported:** You can contact me (Trashcan) if you have issues with this code. I cannot guarantee timeline but I will respond.
 
 This works with Ares 2.0+ as of time of release.
 
