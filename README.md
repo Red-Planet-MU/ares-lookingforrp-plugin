@@ -128,17 +128,11 @@ def self.save_fields_from_profile_edit2(char, enactor, char_data)
 	- `sidebar-custom.js`
 	- `play-custom-sidebar.hbs`
 	- `play-custom-sidebar.js`
-12. Edit `play.hbs` to add the following snippet (new code is BETWEEN the `{{/each}}` and the `</div>`) between lines 94 and 95 at the time of this writing (inside)
-```
-       {{/each}}
-      <PlayCustom @custom_play={{this.model.app.game.custom_play}}/> 
-     </div>
-```
-13. Edit `char-edit-custom-tabs.hbs` to add this line.
+12. Edit `char-edit-custom-tabs.hbs` to add this line.
 ```
 <li><a data-bs-toggle="tab" class="nav-link" href="#lfrp">Looking for RP</a></li>
 ```
-14. Edit `char-edit-custom.hbs` to add this segment:
+13. Edit `char-edit-custom.hbs` to add this segment:
 ```
 <div id="lfrp" class="tab-pane fade in">
 
@@ -148,7 +142,7 @@ Announce to the game when Looking for RP?
 
 </div>
 ```
-15. Edit `char-edit-custom.js` so that the existing segment includes the new return line:
+14. Edit `char-edit-custom.js` so that the existing segment includes the new return line:
 ```
 onUpdate: function() {
     // Return a hash containing your data.  Character data will be in 'char'.  For example:
@@ -158,7 +152,7 @@ onUpdate: function() {
     };
   }
 ```
-16. After pulling your changes onto the game, do the following, in order:
+15. After pulling your changes onto the game, do the following, in order:
 	- `load config`
 	- `load website`
 	- `load profile`
