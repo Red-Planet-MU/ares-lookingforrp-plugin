@@ -18,7 +18,7 @@ All functions work on the web if you follow the additional steps. This is easies
 
 1. From a bit with the Coder role in the client., run `plugin/install <github url>`.
 2. Run `ruby LookingForRp.install_setup`.
-3. Edit `custom_who_fields.rb` (in `plugins/profile/public`) with the below. NOTE: `custom_who_fields` already exists. If you have custom data already, you will need to add this statement to your existing code.
+3. Edit `custom_who_fields.rb` (in `plugins/who`) with the below. NOTE: `custom_who_fields` already exists. If you have custom data already, you will need to add this statement to your existing code.
 ```
 def self.custom_who_field(char, field_type, value, width)
       when 'lookingforrp'
@@ -155,7 +155,8 @@ onUpdate: function() {
 16. After pulling your changes onto the game, do the following, in order:
 	- `load config`
 	- `load website`
-	- `load profile`
+	- `load who`
+	- `load scenes`
 	- `load styles`
 	- `website/deploy`
 

@@ -159,6 +159,7 @@ onUpdate: function() {
 	- `load config`
 	- `load website`
 	- `load profile`
+	- `load scenes`
 	- `load styles`
 	- `website/deploy`
 
