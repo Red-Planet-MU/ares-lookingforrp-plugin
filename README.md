@@ -123,7 +123,7 @@ def self.save_fields_from_profile_edit2(char, enactor, char_data)
 ```
 9. Set the background-color for the `hover` to something that pleases your eye. This is what the button will do when you mouse over it.
 10. Set the color for the `.lfrp-row .fa-solid` to something that pleases your eye. This is what the phone icon will be colored (if you have the Text plugin). 
-11. Add the contents of the following files from the `custom` folder to your versions of those files in the Components folder. If you have no custom sidebar data, you can copy-paste the entire file.
+11. Add the contents of the following files from the `custom` folder to your versions of those files in the Components folder. If you have no custom sidebar/play screen data, you can copy-paste the entire file.
 	- `sidebar-custom.hbs`
 	- `sidebar-custom.js`
 	- `play-custom-sidebar.hbs`
