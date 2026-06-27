@@ -29,7 +29,6 @@ def self.custom_who_field(char, field_type, value, width)
           when "text"
             flag = "%xmTXT%xn"
         end
-        Global.logger.debug "Width: #{width}, flag: #{flag}, flag with ljust: #{flag.ljust(width)}"
         return looking_for_rp ? flag.ljust(width+6) : ""
       else 
         return nil
