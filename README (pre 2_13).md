@@ -31,13 +31,13 @@ when 'lookingforrp'
         looking_for_rp ? flag : ""
 
 ```
-3. Edit `who.yml` in your game's config files to add (after Status):
+4. Edit `who.yml` in your game's config files to add (after Status):
 ```
 - field: lookingforrp
   width: 5
   title: RP?
 ```
-4. Edit `custom_web_data.rb` (in `plugins/website`) with the below. NOTE: `custom_sidebar_data` already exists. If you have custom data already, you will need to add these fields to your existing data. `custom_play_data` is completely new and will not exist. 
+5. Edit `custom_web_data.rb` (in `plugins/website`) with the below. NOTE: `custom_sidebar_data` already exists. If you have custom data already, you will need to add these fields to your existing data. `custom_play_data` is completely new and will not exist. 
 ```
     def self.custom_sidebar_data(viewer)
       return {
@@ -46,7 +46,7 @@ when 'lookingforrp'
       }
     end
 ```
-5. Edit `custom_scene_data.rb` (in `plugins/scenes`) with the below. NOTE: `custom_scene_data` already exists. If you have custom data already, you will need to add these fields to your existing data. 
+6. Edit `custom_scene_data.rb` (in `plugins/scenes`) with the below. NOTE: `custom_scene_data` already exists. If you have custom data already, you will need to add these fields to your existing data. 
 ```
     def self.custom_scene_data(viewer)
       return {
@@ -55,7 +55,7 @@ when 'lookingforrp'
       }
     end
 ```
-6. Edit `custom_char_fields.rb` (in `plugins/profile`) with the below. ANOTHER NOTE: if you have already added custom tabs to your profile edit screen, you will want to add these fields to your existing data.
+7. Edit `custom_char_fields.rb` (in `plugins/profile`) with the below. ANOTHER NOTE: if you have already added custom tabs to your profile edit screen, you will want to add these fields to your existing data.
 ```
 def self.get_fields_for_editing(char, viewer)
         return {
@@ -63,7 +63,7 @@ def self.get_fields_for_editing(char, viewer)
         }
       end
 ```
-7. Also in `custom_char_fields.rb`, edit the custom hook to include the below :
+8. Also in `custom_char_fields.rb`, edit the custom hook to include the below :
 ```
 def self.save_fields_from_profile_edit2(char, enactor, char_data)
         char.update(looking_for_rp_announce: Website.format_input_for_mush(char_data["custom"]["looking_for_rp_announce"] == true ? "on" : "off"))
@@ -125,17 +125,17 @@ def self.save_fields_from_profile_edit2(char, enactor, char_data)
 13. Create new files using the following files from the `custom_old` folder to your Components folder of the web portal. These files will not exist yet in your instance.
 	- `play-custom-sidebar.hbs`
 	- `play-custom-sidebar.js`
-13. Edit `play.hbs` to add the following snippet (new code is BETWEEN the `{{/each}}` and the `</div>`) between lines 94 and 95 at the time of this writing (inside)
+14. Edit `play.hbs` to add the following snippet (new code is BETWEEN the `{{/each}}` and the `</div>`) between lines 94 and 95 at the time of this writing (inside)
 ```
        {{/each}}
       <PlayCustomSidebar @scene={{this.currentScene}} @channel={{this.selectedChannel}} @model={{this.model}} />
      </div>
 ```
-14. Edit `char-edit-custom-tabs.hbs` to add this line.
+15. Edit `char-edit-custom-tabs.hbs` to add this line.
 ```
 <li><a data-bs-toggle="tab" class="nav-link" href="#lfrp">Looking for RP</a></li>
 ```
-15. Edit `char-edit-custom.hbs` to add this segment:
+16. Edit `char-edit-custom.hbs` to add this segment:
 ```
 <div id="lfrp" class="tab-pane fade in">
 
@@ -145,7 +145,7 @@ Announce to the game when Looking for RP?
 
 </div>
 ```
-16. Edit `char-edit-custom.js` so that the existing segment includes the new return line:
+17. Edit `char-edit-custom.js` so that the existing segment includes the new return line:
 ```
 onUpdate: function() {
     // Return a hash containing your data.  Character data will be in 'char'.  For example:
@@ -155,7 +155,7 @@ onUpdate: function() {
     };
   }
 ```
-17. After pulling your changes onto the game, do the following, in order:
+18. After pulling your changes onto the game, do the following, in order:
 	- `load config`
 	- `load website`
 	- `load profile`
