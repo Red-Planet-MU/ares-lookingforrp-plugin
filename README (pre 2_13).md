@@ -37,7 +37,7 @@ when 'lookingforrp'
   width: 5
   title: RP?
 ```
-5. Edit `custom_web_data.rb` (in `plugins/website`) with the below. NOTE: `custom_sidebar_data` already exists. If you have custom data already, you will need to add these fields to your existing data. `custom_play_data` is completely new and will not exist. 
+4. Edit `custom_web_data.rb` (in `plugins/website`) with the below. NOTE: `custom_sidebar_data` already exists. If you have custom data already, you will need to add these fields to your existing data. `custom_play_data` is completely new and will not exist. 
 ```
     def self.custom_sidebar_data(viewer)
       return {
@@ -45,8 +45,10 @@ when 'lookingforrp'
         txt_extra_installed: Manage.is_extra_installed?("txt")
       }
     end
-
-    def self.custom_play_data(viewer)
+```
+5. Edit `custom_scene_data.rb` (in `plugins/scenes`) with the below. NOTE: `custom_scene_data` already exists. If you have custom data already, you will need to add these fields to your existing data. 
+```
+    def self.custom_scene_data(viewer)
       return {
         lfrp_icons: LookingForRp.web_list,
         txt_extra_installed: Manage.is_extra_installed?("txt")
@@ -66,11 +68,6 @@ def self.get_fields_for_editing(char, viewer)
 def self.save_fields_from_profile_edit2(char, enactor, char_data)
         char.update(looking_for_rp_announce: Website.format_input_for_mush(char_data["custom"]["looking_for_rp_announce"] == true ? "on" : "off"))
       end
-```
-8. Edit `get_game_info_handler.rb` (in `website/web`) to include the below after `custom_sidebar: Website.custom_sidebar_data(enactor)`:
-```
-,
-          custom_play: Website.custom_play_data(enactor)
 ```
 9. Add these lines to your custom styles:
 ```
@@ -126,12 +123,12 @@ def self.save_fields_from_profile_edit2(char, enactor, char_data)
 	- `sidebar-custom.hbs`
 	- `sidebar-custom.js`
 13. Create new files using the following files from the `custom_old` folder to your Components folder of the web portal. These files will not exist yet in your instance.
-	- `play_custom.hbs`
-	- `play_custom.js`
+	- `play-custom-sidebar.hbs`
+	- `play-custom-sidebar.js`
 13. Edit `play.hbs` to add the following snippet (new code is BETWEEN the `{{/each}}` and the `</div>`) between lines 94 and 95 at the time of this writing (inside)
 ```
        {{/each}}
-      <PlayCustom @custom_play={{this.model.app.game.custom_play}}/> 
+      <PlayCustomSidebar @scene={{this.currentScene}} @channel={{this.selectedChannel}} @model={{this.model}} />
      </div>
 ```
 14. Edit `char-edit-custom-tabs.hbs` to add this line.

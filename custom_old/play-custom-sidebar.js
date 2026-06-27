@@ -24,7 +24,7 @@ export default Component.extend({
   onLFRPActivity: function(type, msg, timestamp ) {
     let data = JSON.parse(msg);
     if (data.type == 'lfrp_set' || data.type == 'lfrp_expired') { //This probably doesn't fucking matter, they do the same thing
-      this.set('custom_play.lfrp_icons', data.lfrp_icons);
+      this.set('model.custom.lfrp_icons', data.lfrp_icons);
     }
   },
 

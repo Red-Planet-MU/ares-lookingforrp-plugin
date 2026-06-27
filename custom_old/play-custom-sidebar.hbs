@@ -11,12 +11,12 @@
 
 <div class="looking-for-rp">
   {{#if this.showLFRP}}
-    {{#each this.custom_play.lfrp_icons as |char|}}
+    {{#each this.model.custom.lfrp_icons as |char|}}
     {{#if (eq char.lfrp_type 'scene')}}
     <div class="lfrp-row">
       <CharIconInline @char={{char}}/>
     </div>
-    {{else if this.custom_play.txt_extra_installed}}
+    {{else if this.model.custom.txt_extra_installed}}
     <div class="lfrp-row">
       <CharIconInlineLfrpTxt @char={{char}}/>
     </div>
@@ -43,7 +43,7 @@
         {{hour}}
       </PowerSelect>
       <br>
-      {{#if this.custom_play.txt_extra_installed}}
+      {{#if this.model.custom.txt_extra_installed}}
       <label for="txtonly">Only look for a TXT Scene?</label>
       <Input @id="txtonly" @type="checkbox" @checked={{this.lfrpTxt}} />
       {{/if}}
