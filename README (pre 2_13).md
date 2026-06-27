@@ -4,7 +4,7 @@
 
 **Community Supported:** You can contact me (Trashcan) if you have issues with this code. I cannot guarantee timeline but I will respond.
 
-This works with Ares 2.0+ as of time of release. Games running 2.13+ should refer to the [main ReadMe](). 
+This works with Ares 2.0+ as of time of release. Games running 2.13+ should refer to the [main ReadMe](https://github.com/Red-Planet-MU/ares-lookingforrp-plugin/blob/main/README.md). 
 
 ## Overview + Credits
 

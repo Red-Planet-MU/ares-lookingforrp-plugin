@@ -4,7 +4,7 @@
 
 **Community Supported:** You can contact me (Trashcan) if you have issues with this code. I cannot guarantee timeline but I will respond.
 
-This works with Ares 2.0+ as of time of release. **NOTE: The install directions are written for 2.13+. Older versions can still use this plugin but will require custom code configuration beyond the scope of the built-in custom hooks. Pre-2.13 Ares games should follow [these alternative steps]() or upgrade to 2.13+ prior to installation.
+This works with Ares 2.0+ as of time of release. **NOTE: The install directions are written for 2.13+. Older versions can still use this plugin but will require custom code configuration beyond the scope of the built-in custom hooks. Pre-2.13 Ares games should follow [these alternative steps](https://github.com/Red-Planet-MU/ares-lookingforrp-plugin/blob/main/README%20(pre%202_13).md) or upgrade to 2.13+ prior to installation.**
 
 ## Overview + Credits
 
